@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+:root {
+  /* Sunset After Hours — paper, ink, marigold (from the Build-a-thon flyer) */
+  --background: #faf6ec;
+  --foreground: #1b1917;
+  --card: #fffdf8;
+  --card-foreground: #1b1917;
+  --primary: #1b1917;
+  --primary-foreground: #faf6ec;
+  --secondary: #f0eadb;
+  --secondary-foreground: #1b1917;
+  --muted: #efe9da;
+  --muted-foreground: #6b655a;
+  --accent: #e7a62f;
+  --accent-foreground: #1b1917;
+  --destructive: #b4372b;
+  --destructive-foreground: #fff5f2;
+  --border: #d9d1be;
+  --input: #c9c0aa;
+  --ring: #e7a62f;
+  --radius: 0.25rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@theme {
+  --font-sans: "Work Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Courier Prime", ui-monospace, monospace;
+  --font-display: "Caveat", cursive;
+}
+
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+/* Map pins: marigold = the shop is closed, so the room is free */
+.leaflet-div-icon {
+  background: transparent;
+  border: none;
+}
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--muted);
+}
+.pin {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 9999px;
+  border: 2px solid var(--foreground);
+  background: var(--accent);
+  color: var(--foreground);
+  box-shadow: 0 2px 0 rgba(27, 25, 23, 0.35);
+  transition: transform 120ms ease;
+}
+.pin svg {
+  width: 18px;
+  height: 18px;
+}
+.pin.busy {
+  background: var(--card);
+  border-color: var(--muted-foreground);
+  border-style: dashed;
+  color: var(--muted-foreground);
+  box-shadow: none;
+}
+.pin.selected {
+  transform: scale(1.25);
+}
+
+input[type="range"] {
+  accent-color: var(--accent);
+}
+
+/* Ledger rule under section labels */
+.rule {
+  border-bottom: 2px solid var(--foreground);
+}
+
+/* Filter chips scroll sideways on phones, no scrollbar */
+.chip-rail {
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+}
+.chip-rail::-webkit-scrollbar {
+  display: none;
+}
+.chip-rail > * {
+  scroll-snap-align: start;
+}
+
+/* Paper texture: a faint ruled-ledger feel behind the page */
+body {
+  background-image: linear-gradient(transparent 31px, rgba(27, 25, 23, 0.035) 32px);
+  background-size: 100% 32px;
+}
